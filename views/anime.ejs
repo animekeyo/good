@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="light anime">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyo Lite</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/public/styles.css">
+    <style>
+        .anime img {
+            width: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .anime .flex-box {
+            margin-top: 15px;
+        }
+        
+        .video-flex-box {
+            background: var(--search-widget-bg);
+            width: 500px;
+            padding: 23px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        video {
+            width: 100%;
+            border-radius: 5px;
+        }
+        
+        .quailty {
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            align-items: center;
+            gap: 10px;
+            /* margin: 10px 0px; */
+            /* margin-bottom: 15px; */
+            padding: 15px;
+            margin-top: -6px;
+        }
+        
+        .quailty h1 {
+            font-size: 15px;
+            color: var(--color-primary);
+            background: var(--bg-1);
+            line-height: 13px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            min-width: 40px;
+            FONT-WEIGHT: 900;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            align-items: center;
+        }
+        
+        .quailty h1.selected svg {
+            display: block;
+        }
+        
+        .quailty h1.selected {
+            gap: 5px;
+        }
+        
+        .quailty h1 svg {
+            width: 15px;
+            display: none;
+            height: 15px;
+        }
+        
+        .fix-ep img {
+            width: 100%;
+            border-radius: 3px;
+            margin-bottom: unset;
+            margin: 0px;
+            box-shadow: 0px 0px 0px;
+        }
+        
+        .eps {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            margin: 0px 10px;
+        }
+        
+        .ep-holder {
+            height: 150px;
+            background-color: var(--r0);
+            border-radius: 3px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        h1.eps-titlexxc {
+            font-size: 15px;
+            padding: unset;
+            width: 100%;
+            margin: 5px 0px;
+            margin-bottom: 5px;
+            display: flex;
+            font-weight: 200;
+            flex-direction: row;
+            align-content: center;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-primary);
+        }
+        
+        h1.eps-titlexxc svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--color-primary-2);
+            display: none;
+        }
+        
+        .fix-ep.selected h1.eps-titlexxc svg {
+            display: block;
+        }
+        
+        .fix-ep.selected img {
+            margin: 3px;
+            border-radius: 3px;
+            box-shadow: 0px 0px 0px 3px var(--color-primary-2);
+            width: calc(100% - 3px);
+        }
+        
+        @media screen and (max-width:500px) {
+            h1.eps-titlexxc {
+                margin: 5px 0px;
+            }
+            .video-flex-box {
+                width: calc(100% - 10px);
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-bottom: 20px;
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-box">
+        <a href="/">
+            <img src="https://lh3.googleusercontent.com/VqVgWvESFdWucAu1fYLD51OZDSJFrzSYxyU_LOaQVbeqknRcLRlRjjiDkK8TNMgpRSg=s360" alt="">
+        </a>
+        <div class="video-flex-box">
+
+            <video style="display: none;" controls autoplay>
+            
+</video>
+            <div class="quailty">
+
+            </div>
+            <div class="eps">
+
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="cc">
+            @AnimeKeyo
+        </div>
+        <div class="title">
+            |
+        </div>
+        <div class="cc">
+            No ads & No crypto mining!!
+        </div>
+    </div>
+    <%- script %>
+        <script>
+            const iconxxx = `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM9.29 16.29L5.7 12.7c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L10 14.17l6.88-6.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-7.59 7.59c-.38.39-1.02.39-1.41 0z"/></svg>`;
+
+
+            async function run() {
+                const list = await fetch('https://anime.animekeyo.com/list/' + id).then(o => o.json());
+                const sync = await fetch('https://anime.animekeyo.com/sync/' + id).then(o => o.json());
+                const images = await fetch('https://anime.animekeyo.com/images/' + id).then(o => o.json());
+                const details = await fetch('https://anime.animekeyo.com/details/' + id).then(o => o.json());
+                return {
+                    list,
+                    sync,
+                    images,
+                    details
+                };
+            }
+            async function load() {
+                const data = await run();
+                console.log(data)
+
+                if (data.images) {
+                    data.images.forEach(e => {
+                        const theme = `
+            <div id="${e.no}" class="fix-ep">
+                <img src="https://anime.animekeyo.com/image/${e.image}">
+                <h1 class="eps-titlexxc">Episode ${e.no} ${iconxxx}</h1>
+            </div>
+            `;
+                        $('.eps').prepend(theme)
+                    })
+
+                }
+                if (data.list) {
+                    data.list.data.forEach(e => {
+                        console.log(e)
+                        $('[id="' + e.no + '"]').attr('vid', e.id);
+
+                    });
+                }
+            };
+            $(document).on('click', '.video-button', function() {
+                $('.video-button').removeClass('selected')
+                $(this).addClass('selected');
+                $('video').attr('src', 'https://anime.animekeyo.com/video/' + $(this).attr('id')).css('display', '');
+            })
+            $(document).on('click', '.fix-ep', function() {
+                $('.quailty').empty()
+                $('.fix-ep').removeClass('selected');
+                $(this).addClass('selected');
+                $('video').attr('src', '').css('display', "none").attr('poster', $(this).children('img').attr('src'))
+                async function quailty(id) {
+                    const source = await fetch('https://anime.animekeyo.com/source/' + id).then(response => response.json());
+
+                    source.forEach(e => {
+                        const theme = `<h1 class="video-button" id="${e.src}">${e.size} ${iconxxx}</h1>`;
+                        $('.quailty').css('display', 'flex').prepend(theme)
+                    });
+                }
+                quailty($(this).attr('vid'))
+            })
+            load()
+            console.log(id)
+        </script>
+</body>
+
+</html>

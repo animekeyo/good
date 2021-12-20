@@ -10,6 +10,11 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, resp) {
     resp.render('index');
 })
+app.get('/anime/:id', function(req, resp) {
+    const { id } = req.params;
+    const script = `<script> id = '${id}'; </script>`;
+    resp.render('anime', { script });
+})
 app.get('*', function(req, res) {
     res.status(404).send('what???');
 });
