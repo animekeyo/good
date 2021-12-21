@@ -11,12 +11,17 @@
 </head>
 
 <body>
+    <div class="theme">
+
+    </div>
     <div class="flex-box">
         <a href="/">
-            <img src="https://lh3.googleusercontent.com/VqVgWvESFdWucAu1fYLD51OZDSJFrzSYxyU_LOaQVbeqknRcLRlRjjiDkK8TNMgpRSg=s360" alt="">
+            <img src="/public/icon.png" alt="" srcset="">
         </a>
         <div class="door">
-            <input placeholder="Search the animes" type="text" name="" id="">
+            <div class="search-icon-for-input">
+                <input placeholder="Search the animes" type="text" name="" id="">
+            </div>
             <div style="display: none;" class="flex-box-items">
 
             </div>
@@ -34,34 +39,100 @@
         </div>
     </div>
     <script>
+        function seti(ref, val) {
+            localStorage.setItem(ref, val)
+            return localStorage.getItem(ref)
+        }
+
+        function setii(ref, val) {
+            localStorage.setItem(ref, val)
+        }
+
+        function geti(ref) {
+            return localStorage.getItem(ref)
+        }
+        // fetch('https://nekos.life/api/v2/img/wallpaper').then(o => o.json())
+        //   .then((json) => {
+        //       $('body').css('background-image', 'url(' + json.url + ')')
+        //   })
+        const search_icon = '<svg width="15" height="15" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.57212 13.1442C2.94254 13.1442 0 10.2016 0 6.57173C0 2.94248 2.94268 0 6.57212 0C10.2016 0 13.1442 2.94248 13.1442 6.57173C13.1442 8.05658 12.6519 9.42642 11.8215 10.5269L16.3528 15.0581C16.7103 15.4156 16.7103 15.9952 16.3528 16.3527C15.9953 16.7102 15.4157 16.7102 15.0582 16.3527L10.527 11.8215C9.42657 12.6519 8.05682 13.1442 6.57212 13.1442ZM6.57212 11.2665C3.97956 11.2665 1.87775 9.16463 1.87775 6.57184C1.87775 3.97952 3.97966 1.87775 6.57212 1.87775C9.16458 1.87775 11.2665 3.97952 11.2665 6.57184C11.2665 9.16463 9.16468 11.2665 6.57212 11.2665Z" fill="#C2C4CF"></path></svg>';
+        const video_icon = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="96" height="96" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g id="original-icon" fill="#000000"><path d="M137.95833,25.08333h-103.91667c-10.86825,0 -19.70833,8.84367 -19.70833,19.70833v82.41667c0,10.86467 8.84008,19.70833 19.70833,19.70833h103.91667c10.86825,0 19.70833,-8.84367 19.70833,-19.70833v-82.41667c0,-10.86467 -8.84008,-19.70833 -19.70833,-19.70833zM91.375,43c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333v3.58333c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333zM69.875,43c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333v3.58333c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333zM37.625,129c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333zM37.625,46.58333c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333zM59.125,129c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333zM59.125,46.58333c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333zM80.625,129c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333zM102.125,129c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333zM104.318,91.45742l-26.875,15.22917c-0.95675,0.54467 -2.021,0.81342 -3.08883,0.81342c-1.09292,0 -2.18225,-0.28667 -3.15692,-0.85283c-1.92783,-1.12158 -3.11392,-3.18558 -3.11392,-5.418v-30.45833c0,-2.23242 1.18608,-4.29642 3.11392,-5.418c1.92067,-1.12158 4.30358,-1.1395 6.24575,-0.03583l26.875,15.22917c1.96725,1.11083 3.182,3.19633 3.182,5.45383c0,2.2575 -1.21475,4.343 -3.182,5.45742zM123.625,129c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333zM123.625,46.58333c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333zM145.125,129c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333zM145.125,46.58333c0,1.978 -1.60533,3.58333 -3.58333,3.58333h-3.58333c-1.978,0 -3.58333,-1.60533 -3.58333,-3.58333v-3.58333c0,-1.978 1.60533,-3.58333 3.58333,-3.58333h3.58333c1.978,0 3.58333,1.60533 3.58333,3.58333z"></path></g></g></svg>`;
+        const book_icon = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g id="original-icon" fill="#000000"><path d="M45.86667,17.2c-9.50013,0 -17.2,7.69987 -17.2,17.2v103.2c0.00029,1.52596 0.60882,2.98887 1.69089,4.06484c2.02291,7.24685 7.65651,13.13516 15.50911,13.13516h91.73333c2.06765,0.02924 3.99087,-1.05709 5.03322,-2.843c1.04236,-1.78592 1.04236,-3.99474 0,-5.78066c-1.04236,-1.78592 -2.96558,-2.87225 -5.03322,-2.843h-91.73333c-3.23951,0 -5.73333,-2.49383 -5.73333,-5.73333c0,-3.23951 2.49383,-5.73333 5.73333,-5.73333h86c6.33533,0 11.46667,-5.13133 11.46667,-11.46667v-91.73333c0,-6.33533 -5.13133,-11.46667 -11.46667,-11.46667zM68.8,51.6h40.13333c3.1648,0 5.73333,2.56853 5.73333,5.73333c0,3.1648 -2.56853,5.73333 -5.73333,5.73333h-40.13333c-3.1648,0 -5.73333,-2.56853 -5.73333,-5.73333c0,-3.1648 2.56853,-5.73333 5.73333,-5.73333z"></path></g></g></svg>`;
+        const dark_icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clipPath id="__lottie_element_2"><rect width="24" height="24" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(1,0,0,1,12,12)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(69,90,100)" fill-opacity="1" d=" M0,-4 C-2.2100000381469727,-4 -4,-2.2100000381469727 -4,0 C-4,2.2100000381469727 -2.2100000381469727,4 0,4 C2.2100000381469727,4 4,2.2100000381469727 4,0 C4,-2.2100000381469727 2.2100000381469727,-4 0,-4z"></path></g></g><g transform="matrix(1,0,0,1,12,12)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(69,90,100)" fill-opacity="1" d=" M0,6 C-3.309999942779541,6 -6,3.309999942779541 -6,0 C-6,-3.309999942779541 -3.309999942779541,-6 0,-6 C3.309999942779541,-6 6,-3.309999942779541 6,0 C6,3.309999942779541 3.309999942779541,6 0,6z M8,-3.309999942779541 C8,-3.309999942779541 8,-8 8,-8 C8,-8 3.309999942779541,-8 3.309999942779541,-8 C3.309999942779541,-8 0,-11.3100004196167 0,-11.3100004196167 C0,-11.3100004196167 -3.309999942779541,-8 -3.309999942779541,-8 C-3.309999942779541,-8 -8,-8 -8,-8 C-8,-8 -8,-3.309999942779541 -8,-3.309999942779541 C-8,-3.309999942779541 -11.3100004196167,0 -11.3100004196167,0 C-11.3100004196167,0 -8,3.309999942779541 -8,3.309999942779541 C-8,3.309999942779541 -8,8 -8,8 C-8,8 -3.309999942779541,8 -3.309999942779541,8 C-3.309999942779541,8 0,11.3100004196167 0,11.3100004196167 C0,11.3100004196167 3.309999942779541,8 3.309999942779541,8 C3.309999942779541,8 8,8 8,8 C8,8 8,3.309999942779541 8,3.309999942779541 C8,3.309999942779541 11.3100004196167,0 11.3100004196167,0 C11.3100004196167,0 8,-3.309999942779541 8,-3.309999942779541z"></path></g></g></g></svg>`;
+        const light_icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clipPath id="__lottie_element_62"><rect width="24" height="24" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_62)"><g transform="matrix(1.5,0,0,1.5,7,12)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(69,90,100)" fill-opacity="1" d=" M0,-4 C-2.2100000381469727,-4 -1.2920000553131104,-2.2100000381469727 -1.2920000553131104,0 C-1.2920000553131104,2.2100000381469727 -2.2100000381469727,4 0,4 C2.2100000381469727,4 4,2.2100000381469727 4,0 C4,-2.2100000381469727 2.2100000381469727,-4 0,-4z"></path></g></g><g transform="matrix(-1,-0.000009063726793101523,0.000009063726793101523,-1,12,12)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path fill="rgb(69,90,100)" fill-opacity="1" d=" M0,6 C-3.309999942779541,6 -6,3.309999942779541 -6,0 C-6,-3.309999942779541 -3.309999942779541,-6 0,-6 C3.309999942779541,-6 6,-3.309999942779541 6,0 C6,3.309999942779541 3.309999942779541,6 0,6z M8,-3.309999942779541 C8,-3.309999942779541 8,-8 8,-8 C8,-8 3.309999942779541,-8 3.309999942779541,-8 C3.309999942779541,-8 0,-11.3100004196167 0,-11.3100004196167 C0,-11.3100004196167 -3.309999942779541,-8 -3.309999942779541,-8 C-3.309999942779541,-8 -8,-8 -8,-8 C-8,-8 -8,-3.309999942779541 -8,-3.309999942779541 C-8,-3.309999942779541 -11.3100004196167,0 -11.3100004196167,0 C-11.3100004196167,0 -8,3.309999942779541 -8,3.309999942779541 C-8,3.309999942779541 -8,8 -8,8 C-8,8 -3.309999942779541,8 -3.309999942779541,8 C-3.309999942779541,8 0,11.3100004196167 0,11.3100004196167 C0,11.3100004196167 3.309999942779541,8 3.309999942779541,8 C3.309999942779541,8 8,8 8,8 C8,8 8,3.309999942779541 8,3.309999942779541 C8,3.309999942779541 11.3100004196167,0 11.3100004196167,0 C11.3100004196167,0 8,-3.309999942779541 8,-3.309999942779541z"></path></g></g></g></svg>`;
+        if (geti('dark') === 'no') {
+            $('.theme').html(dark_icon)
+            $('html').removeClass('light').addClass('dark')
+        } else {
+            $('.theme').html(light_icon)
+            $('html').removeClass('dark').addClass('light')
+        }
+        $(document).on('click', '.theme', function() {
+            if (geti('dark') === 'no') {
+                $('.theme').html(light_icon)
+                $('html').removeClass('dark').addClass('light')
+                setii('dark', 'yes')
+            } else {
+                $('.theme').html(dark_icon)
+                $('html').removeClass('light').addClass('dark')
+                setii('dark', 'no')
+            }
+        })
+        $('.search-icon-for-input').prepend(search_icon)
         async function run(val, limit, type) {
             const apply = $('.flex-box-items');
-            const data = await fetch('https://anime.animekeyo.com/search?q=' + val).then(o => o.json());
+            const data = await fetch('https://kitsu.io/api/edge/' + type + '?page[limit]=5&filter[text]=' + val).then(o => o.json());
 
             $(document).on('click', '.item', function() {
-                window.location.href = '/anime/' + $(this).attr('id');
+                //    window.location.href = '/anime/' + $(this).attr('id');
             })
-            data.forEach(e => {
+            data.data.forEach(e => {
                 // console.log(e.title)
+                const v = e.attributes;
                 if ($('[id="' + e.id + '"]').length) {
 
                 } else {
-                    const theme = `
-                       <div id="${e.id}" class="item">
+                    if (type === "manga") {
+                        const theme = `
+                       <div id="${e.id}" class="item manga">
+                        <div class="icon">
+                            ${book_icon}
+                        </div>
                         <div class="cover">
-                            <div class="poster" style="background-image:url(https://images.weserv.nl/?url=anime.animekeyo.com/cover/${e.cover}&w=50)"></div>
+                            <div class="poster" style="background-image:url(https://images.weserv.nl/?url=${v.posterImage.original}&w=50)"></div>
                         </div>
                         <div class="details">
                         <div class="title">
-                        ${e.title}
+                        ${v.canonicalTitle}
                         </div>
                         <div class="episodes">
-                             ${e.type} - Episodes ${e.episodes}
+                             ${v.mangaType} - Volume ${v.volumeCount}
                         </div>
                         </div>
-                       
                         </div>`;
-                    apply.prepend(theme).show();
+                        apply.prepend(theme).show();
+                    } else {
+
+
+                        const theme = `
+                       <div id="${e.id}" class="item anime">
+                        <div class="icon">
+                            ${video_icon}
+                        </div>
+                        <div class="cover">
+                            <div class="poster" style="background-image:url(https://images.weserv.nl/?url=${v.posterImage.original}&w=50)"></div>
+                        </div>
+                        <div class="details">
+                        <div class="title">
+                        ${v.canonicalTitle}
+                        </div>
+                        <div class="episodes">
+                             ${v.showType} - Episodes ${v.episodeCount}
+                        </div>
+                        </div>
+                        </div>`;
+                        apply.prepend(theme).show();
+                    }
                 }
 
             });
@@ -70,7 +141,7 @@
         }
 
 
-        run('sword', 10, 'no')
+        //       run('sword', 10, 'no')
         $('input').on('input', function() {
             const apply = $('.flex-box-items');
             if ($(this).val() === '') {
@@ -78,10 +149,8 @@
             } else {
                 apply.hide();
                 apply.empty();
-                run($(this).val(), 5, 'no')
-                fetch('https://anime.animekeyo.com/?q=' + $(this).val() + '&limit=5')
-                    .then(o => o.json())
-                    .then((json) => {});
+                run($(this).val(), 5, 'anime')
+                run($(this).val(), 5, 'manga')
             }
 
         });
