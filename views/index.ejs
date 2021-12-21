@@ -15,9 +15,11 @@
         <a href="/">
             <img src="https://lh3.googleusercontent.com/VqVgWvESFdWucAu1fYLD51OZDSJFrzSYxyU_LOaQVbeqknRcLRlRjjiDkK8TNMgpRSg=s360" alt="">
         </a>
-        <input placeholder="Search the animes" type="text" name="" id="">
-        <div style="display: none;" class="flex-box-items">
+        <div class="door">
+            <input placeholder="Search the animes" type="text" name="" id="">
+            <div style="display: none;" class="flex-box-items">
 
+            </div>
         </div>
     </div>
     <div class="footer">
@@ -34,7 +36,8 @@
     <script>
         async function run(val, limit, type) {
             const apply = $('.flex-box-items');
-            const data = await fetch('https://anime.animekeyo.com/?limit=' + limit + '&q=' + val).then(o => o.json());
+            const data = await fetch('https://anime.animekeyo.com/search?q=' + val).then(o => o.json());
+
             $(document).on('click', '.item', function() {
                 window.location.href = '/anime/' + $(this).attr('id');
             })
@@ -62,10 +65,12 @@
                 }
 
             });
+
+
         }
 
 
-        run('', 10, 'no')
+        run('sword', 10, 'no')
         $('input').on('input', function() {
             const apply = $('.flex-box-items');
             if ($(this).val() === '') {
@@ -74,6 +79,9 @@
                 apply.hide();
                 apply.empty();
                 run($(this).val(), 5, 'no')
+                fetch('https://anime.animekeyo.com/?q=' + $(this).val() + '&limit=5')
+                    .then(o => o.json())
+                    .then((json) => {});
             }
 
         });
